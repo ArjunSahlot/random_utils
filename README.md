@@ -1,2 +1,2 @@
-# module_template
-A template for a pypi python module.
+# utilities
+A python module with various useful utilities.
