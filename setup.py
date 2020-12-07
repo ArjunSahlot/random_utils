@@ -4,15 +4,15 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="module",
+    name="utilities",
     version="0.0.1",
     author="Arjun Sahlot",
     author_email="iarjun.sahlot@gmail.com",
     description="Module with various useful utilities.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/ArjunSahlot/",
-    py_modules=["module"],
+    url="https://github.com/ArjunSahlot/utilities",
+    py_modules=["utilities"],
     packages=setuptools.find_packages(),
     install_requires=[
         "numpy"
