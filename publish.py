@@ -1,6 +1,5 @@
 import os
 import re
-import subprocess
 
 
 def get_next_version(string):
@@ -18,5 +17,5 @@ with open(os.path.join(os.path.realpath(os.path.dirname(__file__)), "setup.py"),
 		f.write(text)
 
 os.chdir(os.path.realpath(os.path.dirname(__file__)))
-
-_ = subprocess.Popen(["twine", "upload", "dist/*"], stdin=subprocess.PIPE, stdout=subprocess.PIPE).communicate(input="USERNAME\nPASSWORD\n")
+_ = os.system("python setup.py bdist_wheel sdist")
+os.system("twine upload dist/*")
