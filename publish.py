@@ -1,5 +1,9 @@
 import os
 import re
+from shutil import rmtree
+
+
+pardir = os.path.realpath(os.path.dirname(__file__))
 
 
 def get_next_version(string):
@@ -8,14 +12,22 @@ def get_next_version(string):
 	return new[0] + "." + new[1] + "." + new[2]
 
 
-with open(os.path.join(os.path.realpath(os.path.dirname(__file__)), "setup.py"), "r") as orig:
+with open(os.path.join(pardir, "setup.py"), "r") as orig:
 	text = orig.read()
-	pos_start = re.search(r"\d+\.\d+\.\d+", text).start()
-	pos_end = re.search(r"\d+\.\d+\.\d+", text).end()
+	prev_name = re.search(r"name ?= ?[\"\'].*[\"\'],", text)
+	name_text = text[prev_name.start():prev_name.end()]
+	name = re.search(r"[\"\'].*[\"\']", name_text)
+	module = text[name.start()+1 + prev_name.start():name.end()-1 + prev_name.start()]
+	version = re.search(r"\d+\.\d+\.\d+", text)
+	pos_start = version.start()
+	pos_end = version.end()
 	text = text[:pos_start] + get_next_version(text[pos_start:pos_end]) + text[pos_end:]
-	with open(os.path.join(os.path.realpath(os.path.dirname(__file__)), "setup.py"), "w") as f:
+	with open(os.path.join(pardir, "setup.py"), "w") as f:
 		f.write(text)
 
-os.chdir(os.path.realpath(os.path.dirname(__file__)))
-_ = os.system("python setup.py bdist_wheel sdist")
-os.system("twine upload dist/*")
+os.chdir(pardir)
+os.system("python setup.py sdist bdist_wheel")
+_ = os.system("twine upload dist/*")
+rmtree(os.path.join(pardir, "build"))
+rmtree(os.path.join(pardir, "dist"))
+rmtree(os.path.join(pardir, f"{module}.egg-info"))
