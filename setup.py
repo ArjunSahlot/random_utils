@@ -14,9 +14,9 @@ setuptools.setup(
     url="https://github.com/ArjunSahlot/random_utils",
     py_modules=["random_utils"],
     packages=setuptools.find_packages(),
-    # install_requires=[
-    #     "numpy"
-    # ],
+    install_requires=[
+        "numpy"
+    ],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)",
