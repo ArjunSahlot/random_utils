@@ -1,4 +1,5 @@
 import ctypes
+import numpy as np
 
 
 def flatten(list_to_flatten) -> iter:
@@ -11,3 +12,8 @@ def flatten(list_to_flatten) -> iter:
 
 def crash():
     ctypes.pointer(ctypes.c_char.from_address(5))[0]
+
+
+def diff(l1, l2):
+    return np.array(l1) - np.array(l2)
+
