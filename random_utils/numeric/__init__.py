@@ -14,5 +14,5 @@ def is_prime(num):
 
 def find_factors(num):
     step = 2 if num % 2 else 1
-    factors = ([i, num // i] for i in range(1, int(num ** 0.5) + 1, step) if num % i == 0))
+    factors = ([i, num // i] for i in range(1, int(num ** 0.5) + 1, step) if num % i == 0)
     return set(reduce(list.__add__, factors))
