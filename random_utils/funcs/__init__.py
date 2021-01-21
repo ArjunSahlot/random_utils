@@ -21,3 +21,10 @@ def diff(l1, l2):
 def map_range(x, from_range, to_range, to_int=True):
     val = np.interp(x, from_range, to_range)
     return int(val) if to_int else val
+
+
+def useless_func(*args):
+    if len(args) == 1:
+        return args[0]
+    else:
+        return args
