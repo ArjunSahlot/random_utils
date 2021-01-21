@@ -17,3 +17,7 @@ def crash():
 def diff(l1, l2):
     return np.array(l1) - np.array(l2)
 
+
+def map_range(x, from_range, to_range, to_int=True):
+    val = np.interp(x, from_range, to_range)
+    return int(val) if to_int else val
