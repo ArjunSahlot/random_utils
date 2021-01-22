@@ -8,19 +8,19 @@ class Vector:
     """
     def __init__(self, x=0, y=0, z=0):
         self.x, self.y, self.z = x, y, z
-    
+
     def get_dir(self):
         """
         Only 2D direction
         """
         return atan(self.y / self.x)
-    
+
     def get_angle(self):
         """
         Only 2D angle
         """
         return self.get_dir()
-    
+
     def copy(self):
         return Vector(self.x, self.y, self.z)
 
@@ -29,19 +29,19 @@ class Vector:
 
     def get_magsq(self):
         return self.x ** 2 + self.y ** 2 + self.z ** 2
-    
+
     def normalize(self):
         self.set_mag(1)
-    
+
     def rem(self, vec):
         if isinstance(vec, Vector):
             self.x %= vec.x
             self.y %= vec.y
-    
+
     def dist(self, vec):
         if isinstance(vec, Vector):
             return ((vec.x - self.x) ** 2 + (vec.y - self.y) ** 2 + (vec.z - self.z) ** 2) ** 0.5
-    
+
     def limit(self, min_val=None, max_val=None, axes=("x", "y", "z")):
         if min_val is not None:
             for axis in axes:
@@ -52,10 +52,10 @@ class Vector:
 
     def get_list(self):
         return [self.x, self.y]
-    
+
     def get_array(self):
         return self.get_list()
-    
+
     def set_mag(self, mag):
         ratio = mag / self.get_mag()
         self.mult(ratio)
@@ -65,13 +65,13 @@ class Vector:
             self.x += vec.x
             self.y += vec.y
             self.z += vec.z
-        
+
     def sub(self, vec):
         if isinstance(vec, Vector):
             self.x -= vec.x
             self.y -= vec.y
             self.z -= vec.z
-        
+
     def div(self, scalar, floor=False):
         if isinstance(scalar, int) or isinstance(scalar, float):
             if floor:
@@ -88,11 +88,11 @@ class Vector:
             self.x *= val
             self.y *= val
             self.z *= val
-        
+
     def dot(self, vec):
         if isinstance(vec, Vector):
             return self * vec
-        
+
     def cross(self, vec):
         if isinstance(vec, Vector):
             return cross(self.get_list(), vec.get_list())
