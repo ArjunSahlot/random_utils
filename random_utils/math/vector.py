@@ -1,4 +1,4 @@
-from math import atan
+from math import atan, sin, cos
 from numpy import cross
 
 
@@ -96,6 +96,10 @@ class Vector:
     def cross(self, vec):
         if isinstance(vec, Vector):
             return cross(self.get_list(), vec.get_list())
+
+    @classmethod
+    def from_angle(cls, angle):
+        return cls(cos(angle), sin(angle))
 
     def __add__(self, vec):
         if isinstance(vec, Vector):
