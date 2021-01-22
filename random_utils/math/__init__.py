@@ -1,6 +1,10 @@
 from functools import reduce
 
 
+class Vector:
+    pass
+
+
 def is_prime(num):
     if num & 1 == 0:
         return True
