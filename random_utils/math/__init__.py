@@ -12,6 +12,25 @@ class Vector:
             self.x += vec.x
             self.y += vec.y
             self.angle = atan(self.y / self.x)
+        
+    def div(self, scalar, floor=False):
+        if isinstance(scalar, int) or isinstance(scalar, float):
+            if floor:
+                self.x //= scalar
+                self.y //= scalar
+            else:
+                self.x /= scalar
+                self.y /= scalar
+            self.angle = atan(self.y / self.x)
+        
+    def mult(self, val):
+        if isinstance(val, int) or isinstance(val, float):
+            self.x *= val
+            self.y *= val
+        
+    def dot(self, vec):
+        if isinstance(vec, Vector):
+            return self * vec
 
     def __add__(self, vec):
         if isinstance(vec, Vector):
@@ -22,15 +41,17 @@ class Vector:
             return Vector(self.x - vec.x, self.y - vec.y)
 
     def __truediv__(self, scalar):
-        return Vector(self.x / scalar, self.y / scalar)
+        if isinstance(scalar, int) or isinstance(scalar, float):
+            return Vector(self.x / scalar, self.y / scalar)
 
     def __floordiv__(self, scalar):
-        return Vector(self.x // scalar, self.y // scalar)
+        if isinstance(scalar, int) or isinstance(scalar, float):
+            return Vector(self.x // scalar, self.y // scalar)
 
     def __mul__(self, val):
         if isinstance(val, Vector):
             return self.x * val.x + self.y * val.y
-        else:
+        elif isinstance(val, int) or isinstance(val, float):
             return Vector(self.x * val, self.y * val)
 
     def __eq__(self, vec):
