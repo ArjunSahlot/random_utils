@@ -8,9 +8,10 @@ class Vector:
         self.angle = atan(y / x)
     
     def add(self, vec):
-        self.x += vec.x
-        self.y += vec.y
-        self.angle = atan(self.y / self.x)
+        if isinstance(vec, Vector):
+            self.x += vec.x
+            self.y += vec.y
+            self.angle = atan(self.y / self.x)
 
     def __add__(self, vec):
         if isinstance(vec, Vector):
