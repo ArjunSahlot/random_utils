@@ -8,10 +8,12 @@ class Vector:
         self.angle = atan(y/x)
 
     def __add__(self, vec):
-        return Vector(self.x + vec.x, self.y + vec.y)
+        if isinstance(vec, Vector):
+            return Vector(self.x + vec.x, self.y + vec.y)
 
     def __sub__(self, vec):
-        return Vector(self.x - vec.x, self.y - vec.y)
+        if isinstance(vec, Vector):
+            return Vector(self.x - vec.x, self.y - vec.y)
 
     def __truediv__(self, scalar):
         return Vector(self.x / scalar, self.y / scalar)
@@ -26,10 +28,12 @@ class Vector:
             return Vector(self.x * val, self.y * val)
 
     def __eq__(self, vec):
-        return vec.x == self.x and vec.y == self.y
+        if isinstance(vec, Vector):
+            return vec.x == self.x and vec.y == self.y
 
     def __ne__(self, vec):
-        return vec.x != self.x and vec.y != self.y
+        if isinstance(vec, Vector):
+            return vec.x != self.x and vec.y != self.y
 
     def __repr__(self):
         return f"Vector at ({self.x}, {self.y}), angle: {self.angle}"
