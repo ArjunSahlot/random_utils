@@ -1,8 +1,38 @@
 from functools import reduce
+from math import atan
 
 
 class Vector:
-    pass
+    def __init__(self, x=0, y=0):
+        self.x, self.y = x, y
+        self.angle = atan(y/x)
+
+    def __add__(self, vec):
+        return Vector(self.x + vec.x, self.y + vec.y)
+
+    def __sub__(self, vec):
+        return Vector(self.x - vec.x, self.y - vec.y)
+
+    def __truediv__(self, scalar):
+        return Vector(self.x / scalar, self.y / scalar)
+
+    def __floordiv__(self, scalar):
+        return Vector(self.x // scalar, self.y // scalar)
+
+    def __mul__(self, val):
+        if isinstance(val, Vector):
+            return self.x * val.x + self.y * val.y
+        else:
+            return Vector(self.x * val, self.y * val)
+
+    def __eq__(self, vec):
+        return vec.x == self.x and vec.y == self.y
+
+    def __ne__(self, vec):
+        return vec.x != self.x and vec.y != self.y
+
+    def __repr__(self):
+        return f"Vector at ({self.x}, {self.y}), angle: {self.angle}"
 
 
 def is_prime(num):
