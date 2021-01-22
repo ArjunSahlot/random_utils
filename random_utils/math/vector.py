@@ -14,6 +14,9 @@ class Vector:
     
     def get_angle(self):
         return self.get_dir()
+    
+    def copy(self):
+        return Vector(self.x, self.y)
 
     def get_mag(self):
         return self.get_magsq() ** 0.5
@@ -21,6 +24,26 @@ class Vector:
     def get_magsq(self):
         return self.x ** 2 + self.y ** 2
     
+    def normalize(self):
+        self.set_mag(1)
+    
+    def rem(self, vec):
+        if isinstance(vec, Vector):
+            self.x %= vec.x
+            self.y %= vec.y
+    
+    def dist(self, vec):
+        if isinstance(vec, Vector):
+            return ((vec.y - self.y) ** 2 + (vec.x - self.x) ** 2) ** 0.5
+    
+    def limit(self, min_val=None, max_val=None):
+        if min_val is not None:
+            self.x = max(min_val, self.x)
+            self.y = max(min_val, self.y)
+        if max_val is not None:
+            self.x = min(max_val, self.x)
+            self.y = min(max_val, self.y)
+
     def get_list(self):
         return [self.x, self.y]
     
