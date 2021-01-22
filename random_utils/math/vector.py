@@ -6,23 +6,29 @@ class Vector:
     """
     A vector class which has many useful vector methods.
     """
-    def __init__(self, x=0, y=0):
-        self.x, self.y = x, y
+    def __init__(self, x=0, y=0, z=0):
+        self.x, self.y, self.z = x, y, z
     
     def get_dir(self):
+        """
+        Only 2D direction
+        """
         return atan(self.y / self.x)
     
     def get_angle(self):
+        """
+        Only 2D angle
+        """
         return self.get_dir()
     
     def copy(self):
-        return Vector(self.x, self.y)
+        return Vector(self.x, self.y, self.z)
 
     def get_mag(self):
         return self.get_magsq() ** 0.5
 
     def get_magsq(self):
-        return self.x ** 2 + self.y ** 2
+        return self.x ** 2 + self.y ** 2 + self.z ** 2
     
     def normalize(self):
         self.set_mag(1)
@@ -34,15 +40,15 @@ class Vector:
     
     def dist(self, vec):
         if isinstance(vec, Vector):
-            return ((vec.y - self.y) ** 2 + (vec.x - self.x) ** 2) ** 0.5
+            return ((vec.x - self.x) ** 2 + (vec.y - self.y) ** 2 + (vec.z - self.z) ** 2) ** 0.5
     
-    def limit(self, min_val=None, max_val=None):
+    def limit(self, min_val=None, max_val=None, axes=("x", "y", "z")):
         if min_val is not None:
-            self.x = max(min_val, self.x)
-            self.y = max(min_val, self.y)
+            for axis in axes:
+                setattr(self, axis, max(min_val, getattr(self, axis)))
         if max_val is not None:
-            self.x = min(max_val, self.x)
-            self.y = min(max_val, self.y)
+            for axis in axes:
+                setattr(self, axis, min(max_val, getattr(self, axis)))
 
     def get_list(self):
         return [self.x, self.y]
@@ -58,25 +64,30 @@ class Vector:
         if isinstance(vec, Vector):
             self.x += vec.x
             self.y += vec.y
+            self.z += vec.z
         
     def sub(self, vec):
         if isinstance(vec, Vector):
             self.x -= vec.x
             self.y -= vec.y
+            self.z -= vec.z
         
     def div(self, scalar, floor=False):
         if isinstance(scalar, int) or isinstance(scalar, float):
             if floor:
                 self.x //= scalar
                 self.y //= scalar
+                self.z //= scalar
             else:
                 self.x /= scalar
                 self.y /= scalar
+                self.z /= scalar
 
     def mult(self, val):
         if isinstance(val, int) or isinstance(val, float):
             self.x *= val
             self.y *= val
+            self.z *= val
         
     def dot(self, vec):
         if isinstance(vec, Vector):
@@ -88,33 +99,33 @@ class Vector:
 
     def __add__(self, vec):
         if isinstance(vec, Vector):
-            return Vector(self.x + vec.x, self.y + vec.y)
+            return Vector(self.x + vec.x, self.y + vec.y, self.z + vec.z)
 
     def __sub__(self, vec):
         if isinstance(vec, Vector):
-            return Vector(self.x - vec.x, self.y - vec.y)
+            return Vector(self.x - vec.x, self.y - vec.y, self.z - vec.z)
 
     def __truediv__(self, scalar):
         if isinstance(scalar, int) or isinstance(scalar, float):
-            return Vector(self.x / scalar, self.y / scalar)
+            return Vector(self.x / scalar, self.y / scalar, self.z / scalar)
 
     def __floordiv__(self, scalar):
         if isinstance(scalar, int) or isinstance(scalar, float):
-            return Vector(self.x // scalar, self.y // scalar)
+            return Vector(self.x // scalar, self.y // scalar, self.z // scalar)
 
     def __mul__(self, val):
         if isinstance(val, Vector):
-            return self.x * val.x + self.y * val.y
+            return self.x * val.x + self.y * val.y + self.z * val.z
         elif isinstance(val, int) or isinstance(val, float):
-            return Vector(self.x * val, self.y * val)
+            return Vector(self.x * val, self.y * val, self.z * val)
 
     def __eq__(self, vec):
         if isinstance(vec, Vector):
-            return vec.x == self.x and vec.y == self.y
+            return vec.x == self.x and vec.y == self.y and vec.z == self.z
 
     def __ne__(self, vec):
         if isinstance(vec, Vector):
-            return vec.x != self.x and vec.y != self.y
+            return vec.x != self.x and vec.y != self.y and vec.z != self.z
 
     def __repr__(self):
-        return f"Vector at ({self.x}, {self.y})"
+        return f"Vector at ({self.x}, {self.y}, {self.z})"
