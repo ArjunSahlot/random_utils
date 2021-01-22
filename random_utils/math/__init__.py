@@ -8,6 +8,19 @@ class Vector:
     """
     def __init__(self, x=0, y=0):
         self.x, self.y = x, y
+    
+    def get_dir(self):
+        return atan(self.y / self.x)
+    
+    def get_angle(self):
+        return self.get_dir()
+
+    def get_mag(self):
+        return (self.x ** 2 + self.y ** 2) ** 0.5
+    
+    def set_mag(self, mag):
+        ratio = mag / self.get_mag()
+        self.mult(ratio)
 
     def add(self, vec):
         if isinstance(vec, Vector):
