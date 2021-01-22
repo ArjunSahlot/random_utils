@@ -97,6 +97,9 @@ class Vector:
         if isinstance(vec, Vector):
             return cross(self.get_list(), vec.get_list())
 
+    def equals(self, vec):
+        return self.__eq__(vec)
+
     @classmethod
     def from_angle(cls, angle):
         return cls(cos(angle), sin(angle))
