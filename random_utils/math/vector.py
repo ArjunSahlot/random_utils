@@ -17,6 +17,12 @@ class Vector:
     def get_mag(self):
         return (self.x ** 2 + self.y ** 2) ** 0.5
     
+    def get_list(self):
+        return [self.x, self.y]
+    
+    def get_array(self):
+        return self.get_list()
+    
     def set_mag(self, mag):
         ratio = mag / self.get_mag()
         self.mult(ratio)
