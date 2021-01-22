@@ -1,4 +1,4 @@
-from math import atan, sin, cos
+from math import atan, sin, cos, radians
 from numpy import cross
 
 
@@ -101,8 +101,12 @@ class Vector:
         return self.__eq__(vec)
 
     @classmethod
-    def from_angle(cls, angle):
-        return cls(cos(angle), sin(angle))
+    def from_radians(cls, radians):
+        return cls(cos(radians), sin(radians))
+
+    @classmethod
+    def from_degrees(cls, degrees):
+        return cls(cos(radians(degrees)), sin(radians(degrees)))
 
     def __add__(self, vec):
         if isinstance(vec, Vector):
