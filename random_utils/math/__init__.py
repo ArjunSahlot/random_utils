@@ -5,7 +5,12 @@ from math import atan
 class Vector:
     def __init__(self, x=0, y=0):
         self.x, self.y = x, y
-        self.angle = atan(y/x)
+        self.angle = atan(y / x)
+    
+    def add(self, vec):
+        self.x += vec.x
+        self.y += vec.y
+        self.angle = atan(self.y / self.x)
 
     def __add__(self, vec):
         if isinstance(vec, Vector):
