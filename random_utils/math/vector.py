@@ -20,7 +20,7 @@ class Vector:
 
     def get_mag(self):
         return self.get_magsq() ** 0.5
-    
+
     def get_magsq(self):
         return self.x ** 2 + self.y ** 2
     
@@ -84,7 +84,7 @@ class Vector:
         
     def cross(self, vec):
         if isinstance(vec, Vector):
-            return float(cross(self.get_list(), vec.get_list()))
+            return cross(self.get_list(), vec.get_list())
 
     def __add__(self, vec):
         if isinstance(vec, Vector):
