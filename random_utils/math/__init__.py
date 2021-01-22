@@ -3,15 +3,21 @@ from math import atan
 
 
 class Vector:
+    """
+    A vector class which has many useful vector methods.
+    """
     def __init__(self, x=0, y=0):
         self.x, self.y = x, y
-        self.angle = atan(y / x)
-    
+
     def add(self, vec):
         if isinstance(vec, Vector):
             self.x += vec.x
             self.y += vec.y
-            self.angle = atan(self.y / self.x)
+        
+    def sub(self, vec):
+        if isinstance(vec, Vector):
+            self.x -= vec.x
+            self.y -= vec.y
         
     def div(self, scalar, floor=False):
         if isinstance(scalar, int) or isinstance(scalar, float):
@@ -21,8 +27,7 @@ class Vector:
             else:
                 self.x /= scalar
                 self.y /= scalar
-            self.angle = atan(self.y / self.x)
-        
+
     def mult(self, val):
         if isinstance(val, int) or isinstance(val, float):
             self.x *= val
