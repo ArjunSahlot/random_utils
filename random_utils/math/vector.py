@@ -1,4 +1,5 @@
 from math import atan
+from numpy import cross
 
 
 class Vector:
@@ -15,7 +16,10 @@ class Vector:
         return self.get_dir()
 
     def get_mag(self):
-        return (self.x ** 2 + self.y ** 2) ** 0.5
+        return self.get_magsq() ** 0.5
+    
+    def get_magsq(self):
+        return self.x ** 2 + self.y ** 2
     
     def get_list(self):
         return [self.x, self.y]
@@ -54,6 +58,10 @@ class Vector:
     def dot(self, vec):
         if isinstance(vec, Vector):
             return self * vec
+        
+    def cross(self, vec):
+        if isinstance(vec, Vector):
+            return float(cross(self.get_list(), vec.get_list()))
 
     def __add__(self, vec):
         if isinstance(vec, Vector):
