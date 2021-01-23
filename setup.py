@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="random_utils",
-    version="0.0.9",
+    version="0.1.1",
     author="Arjun Sahlot",
     author_email="iarjun.sahlot@gmail.com",
     description="Module with various useful utilities.",

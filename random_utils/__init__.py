@@ -2,4 +2,4 @@
 from . import time
 from . import funcs
 from . import colors
-from . import numeric
+from . import math
