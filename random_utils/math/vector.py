@@ -51,7 +51,7 @@ class Vector:
                 setattr(self, axis, min(max_val, getattr(self, axis)))
 
     def get_list(self):
-        return [self.x, self.y]
+        return [self.x, self.y, self.z]
 
     def get_array(self):
         return self.get_list()
@@ -83,7 +83,7 @@ class Vector:
                 self.y /= scalar
                 self.z /= scalar
 
-    def mult(self, val):
+    def mult(self, scalar):
         if isinstance(val, int) or isinstance(val, float):
             self.x *= val
             self.y *= val
