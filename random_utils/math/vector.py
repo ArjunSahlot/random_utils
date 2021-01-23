@@ -84,10 +84,10 @@ class Vector:
                 self.z /= scalar
 
     def mult(self, scalar):
-        if isinstance(val, int) or isinstance(val, float):
-            self.x *= val
-            self.y *= val
-            self.z *= val
+        if isinstance(scalar, int) or isinstance(scalar, float):
+            self.x *= scalar
+            self.y *= scalar
+            self.z *= scalar
 
     def dot(self, vec):
         if isinstance(vec, Vector):
