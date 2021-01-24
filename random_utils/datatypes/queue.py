@@ -22,7 +22,7 @@ class Queue:
 
     def add(self, lst):
         self.arr.extend(lst)
-    
+
     def extend(self, lst):
         self.add(lst)
 
