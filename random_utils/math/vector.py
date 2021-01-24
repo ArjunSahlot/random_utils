@@ -1,5 +1,5 @@
-from math import atan, sin, cos, radians
-from numpy import cross
+from math import atan, sin, cos, radians, degrees
+import numpy as np
 
 
 class Vector:
@@ -9,17 +9,17 @@ class Vector:
     def __init__(self, x=0, y=0, z=0):
         self.x, self.y, self.z = x, y, z
 
-    def get_dir(self):
+    def get_rad(self):
         """
-        Only 2D direction
+        Only 2D
         """
         return atan(self.y / self.x)
 
-    def get_angle(self):
+    def get_deg(self):
         """
-        Only 2D angle
+        Only 2D
         """
-        return self.get_dir()
+        return degrees(self.get_rad())
 
     def copy(self):
         return Vector(self.x, self.y, self.z)
@@ -60,6 +60,39 @@ class Vector:
         ratio = mag / self.get_mag()
         self.mult(ratio)
 
+    def set_rad(self, radians):
+        mag = self.get_mag()
+        self.x = cos(radians) * mag
+        self.y = sin(radians) * mag
+
+    def set_deg(self, degrees):
+        self.rotate_rad(radians(degrees))
+
+    def rotate_rad(self, radians):
+        self.set_rad(self.get_rad() + radians)
+
+    def rotate_deg(self, degrees):
+        self.rotate_rad(radians(degrees))
+
+    def rad_between(self, vec):
+        """
+        Only 2D
+        """
+        if isinstance(vec, Vector):
+            return vec.get_rad() - self.get_rad()
+
+    def deg_between(self, vec):
+        """
+        Only 2D
+        """
+        if isinstance(vec, Vector):
+            return vec.get_deg() - self.get_deg()
+
+    def linterp(self, vec, amt):
+        self.x += (vec.x - self.x) * amt
+        self.y += (vec.y - self.y) * amt
+        self.z += (vec.z - self.z) * amt
+
     def add(self, vec):
         if isinstance(vec, Vector):
             self.x += vec.x
@@ -95,7 +128,7 @@ class Vector:
 
     def cross(self, vec):
         if isinstance(vec, Vector):
-            return cross(self.get_list(), vec.get_list())
+            return np.cross(self.get_list(), vec.get_list())
 
     def equals(self, vec):
         return self.__eq__(vec)
