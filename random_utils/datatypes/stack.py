@@ -2,6 +2,9 @@ class Stack:
     def __init__(self, *args):
         self.arr = list(args)
 
+    def size(self):
+        return len(self)
+
     def push(self, element):
         self.arr.append(element)
 
