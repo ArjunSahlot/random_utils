@@ -20,6 +20,24 @@ class Queue:
     def get_array(self):
         return self.arr
 
+    def add(self, lst):
+        self.arr.extend(lst)
+
+    def sub(self, val):
+        for i in range(len(self.arr)):
+            self.arr[i] -= val
+
+    def mul(self, val, individually=True):
+        if individually:
+            for i in range(len(self.arr)):
+                self.arr[i] *= val
+        else:
+            self.arr *= val
+
+    def div(self, val):
+        for i in range(len(self.arr)):
+            self.arr[i] /= val
+
     def __getitem__(self, slice):
         return self.arr[slice]
 
@@ -27,22 +45,30 @@ class Queue:
         return iter(self.arr)
 
     def __add__(self, lst):
-        self.arr.extend(lst)
+        tmp = self.arr.copy()
+        tmp.extend(lst)
+        return Stack(tmp)
 
     def __sub__(self, val):
-        for i in range(len(self.arr)):
-            self.arr[i] -= val
+        tmp = self.arr.copy()
+        for i in range(len(tmp)):
+            tmp[i] -= val
+        return Stack(tmp)
 
     def __mul__(self, val, individually=True):
+        tmp = self.arr.copy()
         if individually:
-            for i in range(len(self.arr)):
-                self.arr[i] *= val
+            for i in range(len(tmp)):
+                tmp[i] *= val
         else:
-            self.arr *= val
+            tmp *= val
+        return Stack(tmp)
 
     def __div__(self, val):
-        for i in range(len(self.arr)):
-            self.arr[i] /= val
+        tmp = self.arr.copy()
+        for i in range(len(tmp)):
+            tmp[i] /= val
+        return Stack(tmp)
 
     def __len__(self):
         return len(self.arr)
