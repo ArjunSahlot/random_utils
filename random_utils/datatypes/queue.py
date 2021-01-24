@@ -12,7 +12,7 @@ class Queue:
         self.push(element)
 
     def pop(self):
-        self.arr.pop(0)
+        return self.arr.pop(0)
 
     def get_list(self):
         return self.arr

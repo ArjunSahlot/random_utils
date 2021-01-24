@@ -12,7 +12,7 @@ class Stack:
         self.push(element)
 
     def pop(self):
-        self.arr.pop(-1)
+        return self.arr.pop(-1)
 
     def get_list(self):
         return self.arr
