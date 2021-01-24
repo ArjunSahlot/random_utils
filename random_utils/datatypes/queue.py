@@ -27,3 +27,7 @@ class Queue:
                 self.arr[i] *= num
         else:
             self.arr *= num
+
+    def __div__(self, num):
+        for i in range(len(self.arr)):
+            self.arr[i] /= num
