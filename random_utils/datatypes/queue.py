@@ -13,3 +13,6 @@ class Queue:
 
     def __iter__(self):
         return iter(self.arr)
+
+    def __add__(self, lst):
+        self.arr.extend(lst)
