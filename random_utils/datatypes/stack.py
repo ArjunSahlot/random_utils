@@ -20,6 +20,24 @@ class Stack:
     def get_array(self):
         return self.arr
 
+    def add(self, lst):
+        self.arr.extend(lst)
+
+    def sub(self, val):
+        for i in range(len(self.arr)):
+            self.arr[i] -= val
+
+    def mul(self, val, individually=True):
+        if individually:
+            for i in range(len(self.arr)):
+                self.arr[i] *= val
+        else:
+            self.arr *= val
+
+    def div(self, val):
+        for i in range(len(self.arr)):
+            self.arr[i] /= val
+
     def __getitem__(self, slice):
         return self.arr[slice]
 
