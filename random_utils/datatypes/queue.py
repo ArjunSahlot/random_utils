@@ -20,3 +20,10 @@ class Queue:
     def __sub__(self, num):
         for i in range(len(self.arr)):
             self.arr[i] -= num
+
+    def __mul__(self, num, individually=True):
+        if individually:
+            for i in range(len(self.arr)):
+                self.arr[i] *= num
+        else:
+            self.arr *= num
