@@ -22,6 +22,9 @@ class Queue:
 
     def add(self, lst):
         self.arr.extend(lst)
+    
+    def extend(self, lst):
+        self.add(lst)
 
     def sub(self, val):
         for i in range(len(self.arr)):
