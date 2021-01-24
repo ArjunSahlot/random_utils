@@ -3,7 +3,7 @@ class Queue:
         self.arr = list(args)
 
     def size(self):
-        return len(self.arr)
+        return len(self)
 
     def push(self, element):
         self.arr.append(element)
@@ -40,3 +40,6 @@ class Queue:
     def __div__(self, num):
         for i in range(len(self.arr)):
             self.arr[i] /= num
+    
+    def __len__(self):
+        return len(self.arr)
