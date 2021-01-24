@@ -20,6 +20,9 @@ class Stack:
     def get_array(self):
         return self.arr
 
+    def __getitem__(self, slice):
+        return self.arr[slice]
+
     def __iter__(self):
         return iter(self.arr)
 
