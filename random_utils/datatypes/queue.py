@@ -6,7 +6,7 @@ class Queue:
         self.arr.append(element)
 
     def pop(self):
-        self.arr.pop(-1)
+        self.arr.pop(0)
 
     def get_list(self):
         return self.arr
