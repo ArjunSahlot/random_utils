@@ -29,20 +29,20 @@ class Queue:
     def __add__(self, lst):
         self.arr.extend(lst)
 
-    def __sub__(self, num):
+    def __sub__(self, val):
         for i in range(len(self.arr)):
-            self.arr[i] -= num
+            self.arr[i] -= val
 
-    def __mul__(self, num, individually=True):
+    def __mul__(self, val, individually=True):
         if individually:
             for i in range(len(self.arr)):
-                self.arr[i] *= num
+                self.arr[i] *= val
         else:
-            self.arr *= num
+            self.arr *= val
 
-    def __div__(self, num):
+    def __div__(self, val):
         for i in range(len(self.arr)):
-            self.arr[i] /= num
+            self.arr[i] /= val
 
     def __len__(self):
         return len(self.arr)
