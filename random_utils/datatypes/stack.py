@@ -30,7 +30,7 @@ class Stack:
         for i in range(len(self.arr)):
             self.arr[i] -= val
 
-    def mul(self, val, individually=True):
+    def mult(self, val, individually=True):
         if individually:
             for i in range(len(self.arr)):
                 self.arr[i] *= val
