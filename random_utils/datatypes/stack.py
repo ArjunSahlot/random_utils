@@ -31,6 +31,6 @@ class Stack:
     def __div__(self, num):
         for i in range(len(self.arr)):
             self.arr[i] /= num
-    
+
     def __len__(self):
         return len(self.arr)
