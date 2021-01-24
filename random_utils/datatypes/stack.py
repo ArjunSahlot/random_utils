@@ -14,6 +14,9 @@ class Stack:
     def get_list(self):
         return self.arr
 
+    def get_array(self):
+        return self.arr
+
     def __iter__(self):
         return iter(self.arr)
 
