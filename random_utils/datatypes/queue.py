@@ -16,3 +16,7 @@ class Queue:
 
     def __add__(self, lst):
         self.arr.extend(lst)
+
+    def __sub__(self, num):
+        for i in range(len(self.arr)):
+            self.arr[i] -= num
