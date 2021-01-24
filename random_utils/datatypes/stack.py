@@ -43,3 +43,6 @@ class Stack:
 
     def __len__(self):
         return len(self.arr)
+
+    def __repr__(self):
+        return "[" + ", ".join(list(map(str, self.arr))) + "]"
