@@ -7,3 +7,6 @@ class Queue:
 
     def pop(self):
         self.arr.pop(-1)
+
+    def get_list(self):
+        return self.arr
