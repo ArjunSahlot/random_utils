@@ -111,6 +111,9 @@ class Vector:
     def __iter__(self):
         return iter(self.get_list())
 
+    def __getitem__(self, slice):
+        return self.get_list()[slice]
+
     def __add__(self, vec):
         if isinstance(vec, Vector):
             return Vector(self.x + vec.x, self.y + vec.y, self.z + vec.z)
