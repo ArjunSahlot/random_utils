@@ -4,3 +4,6 @@ class Queue:
 
     def push(self, element):
         self.arr.append(element)
+
+    def pop(self):
+        self.arr.pop(-1)
