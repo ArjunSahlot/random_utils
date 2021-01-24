@@ -108,6 +108,9 @@ class Vector:
     def from_degrees(cls, degrees):
         return cls(cos(radians(degrees)), sin(radians(degrees)))
 
+    def __iter__(self):
+        return iter(self.get_list())
+
     def __add__(self, vec):
         if isinstance(vec, Vector):
             return Vector(self.x + vec.x, self.y + vec.y, self.z + vec.z)
