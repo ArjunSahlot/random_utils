@@ -11,8 +11,14 @@ class Queue:
     def append(self, element):
         self.push(element)
 
+    def enqueue(self, element):
+        self.push(element)
+
     def pop(self):
         return self.arr.pop(0)
+
+    def dequeue(self):
+        return self.pop()
 
     def get_list(self):
         return self.arr
