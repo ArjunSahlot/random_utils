@@ -5,6 +5,9 @@ class Stack:
     def size(self):
         return len(self)
 
+    def empty(self):
+        return len(self) == 0
+
     def push(self, element):
         self.arr.append(element)
 
