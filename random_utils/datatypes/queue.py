@@ -20,6 +20,9 @@ class Queue:
     def pop(self):
         return self.arr.pop(0)
 
+    def get(self):
+        return self.pop()
+
     def dequeue(self):
         return self.pop()
 
