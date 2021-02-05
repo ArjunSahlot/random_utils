@@ -17,6 +17,9 @@ class Stack:
     def pop(self):
         return self.arr.pop(-1)
 
+    def get(self):
+        return self.pop()
+
     def get_list(self):
         return self.arr
 
