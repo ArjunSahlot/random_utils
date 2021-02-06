@@ -11,6 +11,9 @@ class Stack:
     def push(self, element):
         self.arr.append(element)
 
+    def put(self, element):
+        self.push(element)
+
     def append(self, element):
         self.push(element)
 
