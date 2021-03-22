@@ -22,6 +22,7 @@ from functools import wraps
 
 
 def time_this(num_iter=1):
+    num_iter = min(1, num_iter)
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
