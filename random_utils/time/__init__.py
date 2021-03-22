@@ -21,12 +21,15 @@ import time
 from functools import wraps
 
 
-def time_this(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        s = time.time()
-        result = func(*args, **kwargs)
-        print(f"Function: {func.__name__}, Time: {time.time() - s}")
-        return result
-
-    return wrapper
+def time_this(num_iter=1):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            s = time.time()
+            for _ in range(num_iter-1):
+                func(*args, **kwargs)
+            result = func(*args, **kwargs)
+            print(f"Function: {func.__name__}, Time: {time.time() - s}")
+            return result
+        return wrapper
+    return decorator
