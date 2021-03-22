@@ -18,13 +18,15 @@
 #
 
 import time
+from functools import wraps
 
 
-def time_this(orig_func):
+def time_this(func):
+    @wraps(func)
     def wrapper(*args, **kwargs):
         s = time.time()
-        result = orig_func(*args, **kwargs)
-        print(f"Function: {orig_func.__name__}, Time: {time.time() - s}")
+        result = func(*args, **kwargs)
+        print(f"Function: {func.__name__}, Time: {time.time() - s}")
         return result
 
     return wrapper
