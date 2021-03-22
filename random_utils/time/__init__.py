@@ -29,7 +29,7 @@ def time_this(num_iter=1):
             for _ in range(num_iter-1):
                 func(*args, **kwargs)
             result = func(*args, **kwargs)
-            print(f"Function: {func.__name__}, Time: {time.time() - s}")
+            print(f"Function: {func.__name__}, Time: {time.time() - s}, Iterations: {num_iter}")
             return result
         return wrapper
     return decorator
